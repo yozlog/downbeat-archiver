@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "downbeat-archiver"
+version = "1.0.0"
+description = "Incrementally download and organize the public DownBeat digital archive"
+requires-python = ">=3.11"
+dependencies = []
+
+[project.scripts]
+downbeat-archiver = "downbeat_archiver.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["downbeat_archiver*"]

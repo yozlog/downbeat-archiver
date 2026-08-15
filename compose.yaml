@@ -1,0 +1,19 @@
+services:
+  downbeat-archiver:
+    image: ghcr.io/yozlog/downbeat-archiver:latest
+    pull_policy: always
+    container_name: downbeat-archiver
+    restart: unless-stopped
+    init: true
+    volumes:
+      - "${DOWNBEAT_PATH:-./archive}:/archive"
+    command:
+      - schedule
+      - --output
+      - /archive
+      - --day
+      - "${SCHEDULE_DAY:-1}"
+      - --hour
+      - "${SCHEDULE_HOUR:-3}"
+      - --timezone
+      - "${TZ:-Asia/Taipei}"
